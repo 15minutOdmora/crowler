@@ -45,7 +45,7 @@ class Json:
         # Get folder path and create directory if it doesnt exist
         folder_path = Path(file_path).parent
         Path(folder_path).mkdir(parents=True, exist_ok=True)
-        with open(filepath, "w") as f:
+        with open(file_path, "w") as f:
             json.dump(json_object, f, indent=4, sort_keys=True)
 
     @staticmethod
@@ -59,7 +59,7 @@ class Json:
         read_json = {}
 
         if os.path.isfile(file_path):  # Read only if file exists.
-            with open(filepath, "r") as f:
+            with open(file_path, "r") as f:
                 read_json = json.load(f)
 
         read_json.update(json_object)
