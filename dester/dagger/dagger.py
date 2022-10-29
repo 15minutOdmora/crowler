@@ -8,6 +8,8 @@ Usefull for running Selenium Driver commands.
 from inspect import getframeinfo, stack
 import sys
 
+from dester.dagger.command_cache import Command, CommandCache
+
 
 quit_commands = [":q", "quit", "exit"]
 
@@ -35,29 +37,19 @@ def debug(save: bool = False):
 
     __print_debug_info(caller_info)
 
-    saved_commands = []
+    command_cache = CommandCache()
 
     while True:
-        command = input(">>> ")
-        failed = False
+        command_str = input(">>> ")
 
-        if command in quit_commands:
+        if command_str in quit_commands:
             break
-        
-        try:
-            result = eval(command, current_vars)
-            if result:
-                print(result)
-        except:
-            try:
-                exec(command, current_vars)
-            except Exception as e:
-                failed = True
-                print(e)
 
-        if save and not failed:
-            saved_commands.append(command)
-    
-    if save:
-        print("Ran commands:", end="\n  ")
-        print("\n  ".join(saved_commands))
+        if command_str == "cache":
+            print(command_cache)
+            continue
+        
+        command = Command(command_str)
+        command.execute(current_vars)
+
+        command_cache.add(command)
