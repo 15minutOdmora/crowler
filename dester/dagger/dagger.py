@@ -9,6 +9,8 @@ from inspect import getframeinfo, stack
 import sys
 
 from dester.dagger.command_cache import Command, CommandCache
+from dester.dagger.command_registry import registry
+from dester.dagger.module_importer import setup as module_import_setup
 
 
 quit_commands = [":q", "quit", "exit"]
@@ -33,7 +35,9 @@ def debug(save: bool = False):
         save (bool, optional): If executed commands should be saved and then displayed. Defaults to False.
     """
     current_vars = __get_current_variables()
-    caller_info = getframeinfo(stack()[1][0])
+    inspected_stack = stack()[1]
+    caller_info = getframeinfo(inspected_stack[0])
+    module_import_setup(inspected_stack)
 
     __print_debug_info(caller_info)
 
@@ -47,6 +51,10 @@ def debug(save: bool = False):
 
         if command_str == "cache":
             print(command_cache)
+            continue
+        
+        if command_str in registry:
+            registry[command_str]()
             continue
         
         command = Command(command_str)
