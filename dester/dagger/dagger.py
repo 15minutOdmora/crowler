@@ -7,7 +7,7 @@ Usefull for running Selenium Driver commands.
 
 from inspect import getframeinfo, stack
 import sys
-import readline
+import readline  # Does not need to be accessed
 
 from dester.dagger.command_cache import Command, CommandCache
 from dester.dagger.command_registry import registry
@@ -27,7 +27,7 @@ def __print_debug_info(caller_info: str):
     print(output)
 
 
-def debug(save: bool = False):
+def activate():
     """
     Starts an interactive debugging session containing all variables up to the function call.
     Execute normal Python logic with access to imported or defined variables up to that point.
@@ -52,6 +52,10 @@ def debug(save: bool = False):
 
         if command_str == "cache":
             print(command_cache)
+            continue
+
+        if command_str == "registry":
+            print(registry)
             continue
         
         if command_str in registry:
