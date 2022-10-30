@@ -7,6 +7,7 @@ Usefull for running Selenium Driver commands.
 
 from inspect import getframeinfo, stack
 import sys
+import readline
 
 from dester.dagger.command_cache import Command, CommandCache
 from dester.dagger.command_registry import registry
@@ -56,7 +57,7 @@ def debug(save: bool = False):
         if command_str in registry:
             registry[command_str]()
             continue
-        
+
         command = Command(command_str)
         command.execute(current_vars)
 
