@@ -1,6 +1,6 @@
 
-from dester.driver.chrome import ChromeDriver
-from dester.core import logging
+from crowler.driver.chrome import ChromeDriver
+from crowler.core import logging
 
 # Setup logging at driver import time
 logging.setup()

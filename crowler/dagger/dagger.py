@@ -9,9 +9,9 @@ from inspect import getframeinfo, stack
 import sys
 import readline  # Does not need to be accessed
 
-from dester.dagger.command_cache import Command, CommandCache
-from dester.dagger.command_registry import registry
-from dester.dagger.module_importer import setup as module_import_setup
+from crowler.dagger.command_cache import Command, CommandCache
+from crowler.dagger.command_registry import registry
+from crowler.dagger.module_importer import setup as module_import_setup
 
 
 quit_commands = [":q", "quit", "exit"]

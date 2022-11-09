@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 
-from dester.driver._base import _BaseDriver
+from crowler.driver._base import _BaseDriver
 
 
 class ChromeDriver(_BaseDriver, Chrome):

@@ -3,8 +3,8 @@ from setuptools import find_packages, setup
 
 
 setup(
-    name="dester",
-    packages=find_packages(include=['dester']),
+    name="crowler",
+    packages=find_packages(include=['crowler']),
     version="0.0.1",
     description="A debugging Selenium exstension for running tests and or scripts on websites.",
     author="Liam Mislej",
