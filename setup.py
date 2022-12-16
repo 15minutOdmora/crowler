@@ -1,4 +1,3 @@
-from gettext import install
 from setuptools import find_packages, setup
 
 
@@ -12,8 +11,9 @@ setup(
     license="MIT",
     python_requires=">3.6",
     install_requires=[
-        "selenium>=4.2.0",
-        "webdriver_manager>=3.7.0"
+        "selenium>=4.7.2",
+        "webdriver_manager>=3.8.5",
+        "ipython>=8.7.0"
     ],
     setup_requires=["pytest-runner==6.0.0"],
     tests_require=["pytest==7.1.2"],
